@@ -10,7 +10,8 @@ $cpuTime = (Get-Counter '\Processor(_Total)\% Processor Time').CounterSamples.Co
 $availMem = (Get-Counter '\Memory\Available MBytes').CounterSamples.CookedValue
 $result = $date + ' > CPU: ' + $cpuTime.ToString("#,0.000") + '%, Avail. Mem.: ' + $availMem.ToString("N0") + 'MB (' + (104857600 * $availMem / $totalRam).ToString("#,0.0") + '%)'
 
-$computerName.toString() >> ".\Info.txt"
-$hardDriveInfo >> ".\Info.txt"
-$totalRam.toString() >> ".\Info.txt"
-$result >> ".\Info.txt"
+$filename = ".\Info.txt"
+$computerName.Name >> $filename
+$hardDriveInfo >> $filename
+$totalRam >> $filename
+$result >> $filename
